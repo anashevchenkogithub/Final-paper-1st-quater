@@ -6,7 +6,7 @@ void FillArray(string[] arr)
 {
     for (int i = 0; i < arr.Length; i++)
     {
-        arr[i] = InputString($"Введите строку {i+1} массива: ");
+        arr[i] = InputString($"Введите строку {i + 1} массива: ");
     }
 }
 
@@ -31,8 +31,28 @@ void PrintArray(string[] arr)
     }
 }
 
-int arraylength = InputInt("Введите количество элементов в массиве");
+void ResultArrayCreate(string[] array, string[] resultarray)
+{
+    int count = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i].Length <= 3)
+        {
+            resultarray[count] = array[i];
+            count++;
+        }
+    }
+}
+int arraylength = InputInt("Введите количество элементов в исходном массиве");
 
 string[] array = new string[arraylength];
 FillArray(array);
 PrintArray(array);
+Console.WriteLine();
+
+string[] resultarray = new string[arraylength];
+
+ResultArrayCreate(array, resultarray);
+
+Console.WriteLine("Итоговый массив, в котором длина строки меньше или равна 3 символам");
+PrintArray(resultarray);
